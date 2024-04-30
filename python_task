@@ -1,0 +1,72 @@
+import random
+
+class Sheikh:
+    def __init__(self):
+        self.name = "Sheikh"
+
+    def manage_task(self, task):
+        # Placeholder function for managing tasks
+        print(f"{self.name} is managing task: {task}")
+
+    def communicate(self):
+        # Placeholder function for communication
+        user_input = input("You: ")
+        response = self.generate_response(user_input)
+        print(f"{self.name}: {response}")
+
+    def generate_response(self, user_input):
+        # Placeholder function for generating responses
+        responses = [
+            "I'm sorry, I didn't understand that.",
+            "Could you please elaborate?",
+            "That's interesting. Tell me more.",
+            "Let me think about that for a moment.",
+            "I'm capable of handling various tasks. What would you like me to do?",
+            # Add more responses here
+        ]
+        return random.choice(responses)
+
+    def mathematics(self, expression):
+        # Placeholder function for mathematical calculations
+        try:
+            result = eval(expression)
+            return result
+        except Exception as e:
+            return f"Error: {e}"
+
+    def science_technology(self, topic):
+        # Placeholder function for providing information on science and technology
+        information = {
+            "artificial intelligence": "Artificial intelligence is the simulation of human intelligence processes by machines, especially computer systems.",
+            "quantum computing": "Quantum computing is a type of computing that takes advantage of the strange ability of subatomic particles to exist in more than one state at any time.",
+            # Add more topics and information here
+        }
+        return information.get(topic.lower(), f"Sorry, I don't have information about {topic}.")
+
+    def hacking(self):
+        # Placeholder function for hacking-related tasks
+        print(f"{self.name} is executing hacking tasks.")
+
+# Example usage
+sheikh = Sheikh()
+
+while True:
+    user_command = input("Enter a command for Sheikh (or 'exit' to quit): ")
+    if user_command.lower() == 'exit':
+        print("Goodbye!")
+        break
+    elif "manage" in user_command:
+        task = user_command.split("manage")[-1].strip()
+        sheikh.manage_task(task)
+    elif "mathematics" in user_command:
+        expression = user_command.split("mathematics")[-1].strip()
+        result = sheikh.mathematics(expression)
+        print(f"Result: {result}")
+    elif "science" in user_command:
+        topic = user_command.split("science")[-1].strip()
+        information = sheikh.science_technology(topic)
+        print(information)
+    elif "hacking" in user_command:
+        sheikh.hacking()
+    else:
+        sheikh.communicate()
